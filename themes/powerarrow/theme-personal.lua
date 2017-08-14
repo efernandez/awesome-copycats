@@ -69,9 +69,9 @@ theme.widget_vol                                = theme.dir .. "/icons/vol.png"
 theme.widget_vol_low                            = theme.dir .. "/icons/vol_low.png"
 theme.widget_vol_no                             = theme.dir .. "/icons/vol_no.png"
 theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.png"
-theme.widget_mail                               = theme.dir .. "/icons/mail.png"
-theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
-theme.widget_task                               = theme.dir .. "/icons/task.png"
+--theme.widget_mail                               = theme.dir .. "/icons/mail.png"
+--theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
+--theme.widget_task                               = theme.dir .. "/icons/task.png"
 --theme.widget_scissors                           = theme.dir .. "/icons/scissors.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
@@ -118,19 +118,19 @@ theme.cal = lain.widget.calendar({
 })
 
 -- Taskwarrior
-local task = wibox.widget.imagebox(theme.widget_task)
-lain.widget.contrib.task.attach(task, {
-    -- do not colorize output
-    show_cmd = "task | sed -r 's/\\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g'"
-})
-task:buttons(awful.util.table.join(awful.button({}, 1, lain.widget.contrib.task.prompt)))
+--local task = wibox.widget.imagebox(theme.widget_task)
+--lain.widget.contrib.task.attach(task, {
+    ---- do not colorize output
+    --show_cmd = "task | sed -r 's/\\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g'"
+--})
+--task:buttons(awful.util.table.join(awful.button({}, 1, lain.widget.contrib.task.prompt)))
 
 -- Scissors (xsel copy and paste)
 --local scissors = wibox.widget.imagebox(theme.widget_scissors)
 --scissors:buttons(awful.util.table.join(awful.button({}, 1, function() awful.spawn("xsel | xsel -i -b") end)))
 
 -- Mail IMAP check
-local mailicon = wibox.widget.imagebox(theme.widget_mail)
+--local mailicon = wibox.widget.imagebox(theme.widget_mail)
 --[[ commented because it needs to be set before use
 mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.spawn(mail) end)))
 local mail = lain.widget.imap({
