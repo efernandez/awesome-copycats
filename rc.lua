@@ -423,6 +423,36 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "e", function () awful.spawn(gui_editor) end),
     awful.key({ modkey }, "q", function () awful.spawn(browser) end),
 
+    -- Audio keys
+    -- We use -D pulse for toggle mute, assuming we use pulseaudio
+    -- Check it works with alsamixer
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+        awful.util.spawn("amixer -D pulse set Master 9%+", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+        awful.util.spawn("amixer -D pulse set Master 9%-", false) end),
+    awful.key({ }, "XF86AudioMute", function ()
+        awful.util.spawn("amixer -D pulse set Master toggle", false) end),
+    awful.key({ }, "XF86AudioMicMute", function ()
+        awful.util.spawn("amixer -D pulse set Capture toggle", false) end),
+
+    -- Brightness keys
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("xbacklight -inc 10", false) end),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("xbacklight -dec 10", false) end),
+
+    -- External Display key
+    awful.key({ }, "XF86Display", function ()
+        awful.util.spawn("xrandr --output HDMI1 --auto --right-of eDP1", false) end),
+
+    -- Keyboard Layout
+    -- We could query the current layout with:
+    -- setxkbmap -query | grep layout | awk '{print $2}'
+    awful.key({ modkey, "Shift" }, "s", function()
+        awful.util.spawn("setxkbmap es", false) end),
+    awful.key({ modkey, "Shift" }, "e", function()
+        awful.util.spawn("setxkbmap us", false) end),
+
     -- Default
     --[[ Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
