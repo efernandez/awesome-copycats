@@ -451,7 +451,8 @@ globalkeys = awful.util.table.join(
 
     -- External Display key
     awful.key({ }, "XF86Display", function ()
-        awful.util.spawn("xrandr --output HDMI1 --auto --right-of eDP1", false) end),
+        awful.util.spawn("xrandr --output HDMI1 --auto --right-of eDP1 && xrandr --output VGA1 --auto --left-of eDP1",
+                         false) end),
 
     -- Keyboard Layout
     -- We could query the current layout with:
